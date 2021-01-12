@@ -3,15 +3,18 @@ CREATE TABLE users
     id       BIGINT PRIMARY KEY AUTO_INCREMENT,
     name     VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255)        NOT NULL,
-    email    VARCHAR(255),
+    email    VARCHAR(255) UNIQUE NOT NULL,
     age      SMALLINT
 );
+CREATE INDEX IX_users_name ON users (name);
+CREATE INDEX IX_users_email ON users (email);
 
 CREATE TABLE roles
 (
     id   BIGINT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(255) NOT NULL
+    name VARCHAR(255) UNIQUE NOT NULL
 );
+CREATE INDEX IX_roles_name ON users (name);
 
 CREATE TABLE users_roles
 (
